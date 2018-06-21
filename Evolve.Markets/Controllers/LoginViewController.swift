@@ -39,8 +39,10 @@ class LoginViewController: UIViewController {
  
     
     @IBAction func login(_ sender: Any) {
+        performUIUpdatesOnMain {
+            self.actInd.startAnimating()
+        }
         
-        actInd.startAnimating()
         
         EMClient().loginMethod(email: emailTextField.text!, password: passwordTextfield.text!) { (error) in
             if error != nil {

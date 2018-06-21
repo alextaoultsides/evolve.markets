@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AlamofireNetworkActivityIndicator
 
 class AccountSettingsViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class AccountSettingsViewController: UIViewController {
     let leverages = ["FX 500 - BTC 50", "FX 200 - BTC 25", "FX 100 - BTC 10", "FX 50 - BTC 5"]
     let newLeverages = ["500", "200", "100", "50"]
     let loginTextfieldDelegate = LoginTextFieldDelegate()
+    var actInd: UIActivityIndicatorView!
     
     //MARK: Set UI
     fileprivate func setUI() {
@@ -42,6 +44,7 @@ class AccountSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        actInd = showActivityIndicator(uiView: self.view)
         performUIUpdatesOnMain {
             self.setUI()
         }
@@ -65,8 +68,9 @@ class AccountSettingsViewController: UIViewController {
         saveButton.title = "Save"
         saveButton.tintColor = UIColor.white
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self,action: #selector(self.saveUpdates))
-        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self,action: #selector(self.dismissController(_:)))
+        cancelButton.title = "Cancel"
+        cancelButton.tintColor = UIColor.white
         let navItem = UINavigationItem()
         
         navItem.rightBarButtonItem = saveButton
@@ -79,13 +83,20 @@ class AccountSettingsViewController: UIViewController {
     
     //Updates account settings if they have changed
     @objc func saveUpdates(_ sender: UIButton) {
-
+        performUIUpdatesOnMain {
+            self.actInd.startAnimating()
+        }
+        
         if setAccountNameTextfield.text! != "" {
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "name", updatedItem: setAccountNameTextfield.text!){ (error) in
                 if error != nil{
                     self.displayError(error?.localizedDescription)
                 }
                 print("name Changed")
+                print(EMClient.sharedInstance().user.accountDemo![0].name)
+                performUIUpdatesOnMain {
+                    self.actInd.stopAnimating()
+                }
             }
         }
         
@@ -100,6 +111,7 @@ class AccountSettingsViewController: UIViewController {
         }
         
         if setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex) != account.group {
+            print("\(account.accountType) \(account.group) \(setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex))")
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.group!, updateType: "group", updatedItem: setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!){ (error) in
                 if error != nil{
                     self.displayError(error?.localizedDescription)
@@ -107,6 +119,7 @@ class AccountSettingsViewController: UIViewController {
                 print("Type Changed")
             }
         }
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK Delete account button

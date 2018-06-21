@@ -28,12 +28,34 @@ class UserAccountsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //actInd.startAnimating()
+        actInd.startAnimating()
         userAccounts = EMClient.sharedInstance().user
+        
+        reload()
         performUIUpdatesOnMain {
             self.accountTableView.reloadData()
         }
+        
     }
+    
+    func reload() {
+        accountTableView.beginUpdates()
+        EMClient.sharedInstance().loginWithSessionID() { (error) in
+            if error != nil {
+                self.displayError(error?.localizedDescription)
+            }
+            self.accountTableView.endUpdates()
+            performUIUpdatesOnMain {
+                
+                
+                
+                self.actInd.stopAnimating()
+                
+            }
+        }
+        
+    }
+    
     
     @objc func demoAddFunds(_ sender:UIButton) {
         let accountNum = userAccounts?.accountDemo![sender.tag].metaID
@@ -46,6 +68,7 @@ class UserAccountsViewController: UIViewController {
                     if error != nil {
                         self.displayError(error?.localizedDescription)
                     }
+                    self.reload()
                     performUIUpdatesOnMain {
                         self.accountTableView.reloadData()
                     }
@@ -172,19 +195,7 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Live Accountsss"
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let accountTableView = UIView()
-        
-        return accountTableView
-    }
     
     
 }

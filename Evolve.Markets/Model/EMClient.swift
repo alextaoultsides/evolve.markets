@@ -69,13 +69,13 @@ class EMClient: NSObject {
         
         request.responseObject { (response: DataResponse<EMUser>) in
             
-            let accounts = response.result.value
+            
             if response.error != nil {
                 completion(response.error)
             }
-            
+            let accounts = response.result.value
             EMClient.sharedInstance().user = accounts
-            
+            print(accounts?.accountDemo![0].balance)
             completion(nil)
         }
     }
@@ -96,6 +96,7 @@ class EMClient: NSObject {
                 }
                 completion(nil)
             }
+            completion(nil)
         }
     }
     
@@ -112,6 +113,7 @@ class EMClient: NSObject {
                     completion(response.error)
                 }
                 completion(nil)
+                
             }
         }
     }
@@ -127,6 +129,8 @@ class EMClient: NSObject {
             if response.error != nil {
                 completion(response.error)
             }
+            print("*********************")
+            print(response)
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(response.error)
