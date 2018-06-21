@@ -93,7 +93,7 @@ class AccountSettingsViewController: UIViewController {
                     self.displayError(error?.localizedDescription)
                 }
                 print("name Changed")
-                print(EMClient.sharedInstance().user.accountDemo![0].name)
+                
                 performUIUpdatesOnMain {
                     self.actInd.stopAnimating()
                 }
