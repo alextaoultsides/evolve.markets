@@ -87,6 +87,7 @@ class AccountSettingsViewController: UIViewController {
             self.actInd.startAnimating()
         }
         
+        
         if setAccountNameTextfield.text! != "" {
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "name", updatedItem: setAccountNameTextfield.text!){ (error) in
                 if error != nil{
@@ -94,9 +95,7 @@ class AccountSettingsViewController: UIViewController {
                 }
                 print("name Changed")
                 
-                performUIUpdatesOnMain {
-                    self.actInd.stopAnimating()
-                }
+                
             }
         }
         
@@ -111,13 +110,16 @@ class AccountSettingsViewController: UIViewController {
         }
         
         if setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex) != account.group {
-            print("\(account.accountType) \(account.group) \(setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex))")
-            EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.group!, updateType: "group", updatedItem: setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!){ (error) in
+            print("\(account.accountType!) \(account.group!) \(setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!)")
+            EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "group", updatedItem: setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!){ (error) in
                 if error != nil{
                     self.displayError(error?.localizedDescription)
                 }
                 print("Type Changed")
             }
+        }
+        performUIUpdatesOnMain {
+            self.actInd.stopAnimating()
         }
         dismiss(animated: true, completion: nil)
     }

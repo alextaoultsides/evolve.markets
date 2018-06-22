@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 0
         
-        NetworkActivityIndicatorManager.shared.completionDelay = 5
+        NetworkActivityIndicatorManager.shared.completionDelay = 2
         return true
     }
 

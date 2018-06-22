@@ -75,7 +75,7 @@ class EMClient: NSObject {
             }
             let accounts = response.result.value
             EMClient.sharedInstance().user = accounts
-            print(accounts?.accountDemo![0].balance)
+            
             completion(nil)
         }
     }
@@ -130,7 +130,7 @@ class EMClient: NSObject {
                 completion(response.error)
             }
             print("*********************")
-            print(response)
+            
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(response.error)

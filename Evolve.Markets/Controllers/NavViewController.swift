@@ -17,9 +17,14 @@ class NavViewController: UINavigationController {
         
         navBar.topItem?.title = "Evolve Markets"
         let logOutButton = UINavigationItem()
-        logOutButton.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logOut))
+        logOutButton.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
+        logOutButton.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
-        navBar.backItem?.backBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logOut))
+        logOutButton.leftBarButtonItem?.tintColor = UIColor.white
+        logOutButton.rightBarButtonItem?.tintColor = UIColor.white
+        
+        navBar.backItem?.hidesBackButton = true
+       
         navBar.items?.append(logOutButton)
     }
     
@@ -35,4 +40,11 @@ class NavViewController: UINavigationController {
             }
         }
     }
+    
+    @objc func refresh() {
+        self.visibleViewController?.viewDidLoad()
+        self.visibleViewController?.viewWillAppear(true)
+    }
+    
+    
 }
