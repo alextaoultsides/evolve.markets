@@ -25,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 0
+        NetworkActivityIndicatorManager.shared.completionDelay = 1
         
-        NetworkActivityIndicatorManager.shared.completionDelay = 2
+        let loginViewController = window?.rootViewController as! LoginViewController
+        
+        loginViewController.dataController = dataController
         return true
     }
 

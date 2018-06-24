@@ -23,9 +23,8 @@ class UserAccountsViewController: UIViewController {
         super.viewDidLoad()
         actInd = showActivityIndicator(uiView: self.view)
         accountTableView.allowsSelection = false
-        
-
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         actInd.startAnimating()
@@ -35,9 +34,9 @@ class UserAccountsViewController: UIViewController {
         performUIUpdatesOnMain {
             self.accountTableView.reloadData()
         }
-        
     }
     
+    //MARK: Refresh View
     func reload() {
         accountTableView.beginUpdates()
         EMClient.sharedInstance().loginWithSessionID() { (error) in
@@ -46,17 +45,12 @@ class UserAccountsViewController: UIViewController {
             }
             self.accountTableView.endUpdates()
             performUIUpdatesOnMain {
-                
-                
-                
                 self.actInd.stopAnimating()
-                
             }
         }
-        
     }
     
-    
+    //MARK: dynamic account buttons
     @objc func demoAddFunds(_ sender:UIButton) {
         let accountNum = userAccounts?.accountDemo![sender.tag].metaID
         
@@ -64,6 +58,7 @@ class UserAccountsViewController: UIViewController {
             if result != nil {
                 self.amount = Double(result!)
                 print(self.amount)
+                self.actInd.startAnimating()
                 EMClient.sharedInstance().demoPostFunds(accountNumber: accountNum!, amount: self.amount * pow(10, 8)) { (error) in
                     if error != nil {
                         self.displayError(error?.localizedDescription)
@@ -71,6 +66,7 @@ class UserAccountsViewController: UIViewController {
                     self.reload()
                     performUIUpdatesOnMain {
                         self.accountTableView.reloadData()
+                        self.actInd.stopAnimating()
                     }
                 }
             }
@@ -82,13 +78,28 @@ class UserAccountsViewController: UIViewController {
         removeAccountPrompt(accountNum: accountNum!)
     }
     
+    @objc func liveAccountSettings(_ sender: UIButton) {
+        let account = userAccounts?.accountLive![sender.tag]
+        accountSettings(account: account!)    }
+    
     @objc func demoAccountSettings(_ sender: UIButton) {
         let account = userAccounts?.accountDemo![sender.tag]
-        
+        accountSettings(account: account!)
+    }
+    
+    @objc func liveAccountDeposit(_ sender: UIButton) {
+        let accountNum = userAccounts?.accountLive![sender.tag].metaID
+        websiteForward(deposit: false, accountNum: accountNum!)
+    }
+    @objc func liveAccountWithdraw(_ sender: UIButton) {
+        let accountNum = userAccounts?.accountLive![sender.tag].metaID
+        websiteForward(deposit: false, accountNum: accountNum!)
+    }
+    
+    //MARK: Account Settings View Controller
+    func accountSettings(account: EMAccount) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "accountSettings") as! AccountSettingsViewController
-        
         controller.account = account
-        
         present(controller, animated: true, completion: nil)
     }
     
@@ -112,6 +123,25 @@ class UserAccountsViewController: UIViewController {
             completion(nil)
         }
     }
+    //MARK:  Live account browser forwarding
+    func websiteForward(deposit: Bool, accountNum: Int) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCircularIcon: true
+        )
+        let alert = SCLAlertView(appearance: appearance)
+        alert.title = "Must view in Browser"
+        let alertViewIcon = UIImage(named: "EM")
+        
+        alert.addButton("Open Browser") {
+            let app = UIApplication.shared
+            if deposit == true {
+                app.open(URL(string: "https://mt5.clients.evolve.markets/#/account/live/\(accountNum)/deposit")!, completionHandler: nil)
+            } else {
+                app.open(URL(string: "https://mt5.clients.evolve.markets/#/account/live/\(accountNum)/withdraw")!, completionHandler: nil)
+            }
+        }
+        alert.showEdit("Must View in Browser", subTitle: "",closeButtonTitle: "Cancel",colorStyle: 0x007AFF, circleIconImage: alertViewIcon)
+    }
     
     //MARK: Alert for Removing Account
     func removeAccountPrompt(accountNum: Int) {
@@ -125,15 +155,15 @@ class UserAccountsViewController: UIViewController {
             EMClient.sharedInstance().deleteAccount(accountNumber:accountNum) {(error) in
                 if error != nil {
                     self.displayError(error?.localizedDescription)
+                    self.actInd.stopAnimating()
                 }
             }
         }
-        
         alert.showEdit("Delete Account?", subTitle: "\(accountNum)",closeButtonTitle: "No",colorStyle: 0x007AFF, circleIconImage: alertViewIcon)
     }
 }
 
-
+//MARK: Tableview Delegate
 extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -159,7 +189,8 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
         } else if indexPath.section == 0 && indexPath.row > 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "liveAccountCell") as! AccountCell
             if let user = EMClient.sharedInstance().user {
-                cell.accountBalance.text = "\(user.accountLive![indexPath.row - 1].balance!) \(user.accountLive![indexPath.row - 1].denomination!)"
+                let balance = String(format: "%.8f", (user.accountLive![indexPath.row - 1].balance! / pow(10, 8)))
+                cell.accountBalance.text = "\(balance) \(user.accountLive![indexPath.row - 1].denomination!)"
                 cell.accountType.text = String(describing: user.accountLive![indexPath.row - 1].group!)
                 cell.accountName.text = String(describing: user.accountLive![indexPath.row - 1].name!)
                 cell.accountNumber.text = "\(user.accountLive![indexPath.row - 1].metaID!)"
@@ -167,6 +198,12 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.withdrawButton.layer.borderWidth = 1
                 cell.withdrawButton.layer.borderColor = UIColor.blue.cgColor
                 cell.setButton()
+                cell.withdrawButton.tag = indexPath.row - 1
+                cell.withdrawButton.addTarget(self, action: #selector(self.liveAccountWithdraw(_:)), for: .touchUpInside)
+                cell.depositButton.tag = indexPath.row - 1
+                cell.depositButton.addTarget(self, action: #selector(self.liveAccountDeposit(_:)), for: .touchUpInside)
+                cell.settingsButton.tag = indexPath.row - 1
+                cell.settingsButton.addTarget(self, action: #selector(self.liveAccountSettings(_:)), for: .touchUpInside)
             }
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0 {
@@ -194,9 +231,5 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         }
     }
-    
-
-    
-    
 }
 

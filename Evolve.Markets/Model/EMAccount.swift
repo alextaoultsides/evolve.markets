@@ -21,9 +21,7 @@ class EMAccount: Mappable {
     var metaID: Int?
     var name: String?
     
-    
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {

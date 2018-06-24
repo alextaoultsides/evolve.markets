@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import CoreData
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -16,6 +17,7 @@ class LoginViewController: UIViewController {
    
     var actInd: UIActivityIndicatorView!
     var sessionLoginCheck: Bool!
+    var dataController: DataController!
     let loginTextfieldDelegate = LoginTextFieldDelegate()
     
     override func viewDidLoad() {
@@ -47,12 +49,18 @@ class LoginViewController: UIViewController {
         EMClient().loginMethod(email: emailTextField.text!, password: passwordTextfield.text!) { (error) in
             if error != nil {
                 self.displayError(error?.localizedDescription)
-                
+                self.actInd.stopAnimating()
             } else {
+                let appLogin = AppLogins(context: self.dataController.viewContext)
+                appLogin.loginDate = Date()
+                print(appLogin.loginDate)
+                try? self.dataController.viewContext.save()
                 performUIUpdatesOnMain {
-                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "navView")
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "navView") as! NavViewController
                     self.view.endEditing(true)
-                    self.present(controller!, animated: true, completion: nil)
+                    EMClient.sharedInstance().dataController = self.dataController
+                    self.present(controller, animated: true, completion: nil)
+                    
                     self.actInd.stopAnimating()
                 }
             }

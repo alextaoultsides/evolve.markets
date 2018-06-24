@@ -23,13 +23,12 @@
 		D47B689B20BF2BDE0035F749 /* EMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B689A20BF2BDE0035F749 /* EMUser.swift */; };
 		D47B68A920C1A5430035F749 /* EMAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B68A820C1A5430035F749 /* EMAccount.swift */; };
 		D482340920D8156000D197D1 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482340820D8156000D197D1 /* AccountSettingsViewController.swift */; };
-		D4A4C3FA20D448C400D2D811 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A4C3F920D448C400D2D811 /* CustomAlert.swift */; };
 		D4A4C40520D44D4800D2D811 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */; };
 		D4C16AD320C8512100547C95 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C16AD220C8512100547C95 /* AccountCell.swift */; };
 		D4EFDB1920DAABA600E7941E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFDB1820DAABA600E7941E /* DataController.swift */; };
 		D4F3C6E820CF4AE500C35683 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3C6E720CF4AE500C35683 /* NavViewController.swift */; };
 		D4F3C6F320D1654500C35683 /* EMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3C6F220D1654500C35683 /* EMConstants.swift */; };
-		D4FA3F0D20DCAD21000D78AB /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA3F0C20DCAD21000D78AB /* UserSettingsViewController.swift */; };
+		D4FA3F0D20DCAD21000D78AB /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA3F0C20DCAD21000D78AB /* HistoryViewController.swift */; };
 		D4FF7AF020BB57610066ADF0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FF7AE120BB56240066ADF0 /* Alamofire.framework */; };
 		D4FF7AF120BB57610066ADF0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4FF7AE120BB56240066ADF0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4FF7AF620BC8AB90066ADF0 /* LoginTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF7AF520BC8AB90066ADF0 /* LoginTextFieldDelegate.swift */; };
@@ -157,13 +156,12 @@
 		D47B689A20BF2BDE0035F749 /* EMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUser.swift; sourceTree = "<group>"; };
 		D47B68A820C1A5430035F749 /* EMAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAccount.swift; sourceTree = "<group>"; };
 		D482340820D8156000D197D1 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
-		D4A4C3F920D448C400D2D811 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D4C16AD220C8512100547C95 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		D4EFDB1820DAABA600E7941E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D4F3C6E720CF4AE500C35683 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		D4F3C6F220D1654500C35683 /* EMConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMConstants.swift; sourceTree = "<group>"; };
-		D4FA3F0C20DCAD21000D78AB /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		D4FA3F0C20DCAD21000D78AB /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D4FF7AD520BB56240066ADF0 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D4FF7AF520BC8AB90066ADF0 /* LoginTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +231,6 @@
 				D4FF7AF520BC8AB90066ADF0 /* LoginTextFieldDelegate.swift */,
 				D47B682220BEF0C20035F749 /* DisplayError.swift */,
 				D4C16AD220C8512100547C95 /* AccountCell.swift */,
-				D4A4C3F920D448C400D2D811 /* CustomAlert.swift */,
 				D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */,
 			);
 			path = View;
@@ -246,7 +243,7 @@
 				D416507C20C36632000E07E1 /* UserAccountsViewController.swift */,
 				D4F3C6E720CF4AE500C35683 /* NavViewController.swift */,
 				D482340820D8156000D197D1 /* AccountSettingsViewController.swift */,
-				D4FA3F0C20DCAD21000D78AB /* UserSettingsViewController.swift */,
+				D4FA3F0C20DCAD21000D78AB /* HistoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -506,9 +503,8 @@
 			files = (
 				D47B689B20BF2BDE0035F749 /* EMUser.swift in Sources */,
 				D4A4C40520D44D4800D2D811 /* ActivityIndicator.swift in Sources */,
-				D4A4C3FA20D448C400D2D811 /* CustomAlert.swift in Sources */,
 				D482340920D8156000D197D1 /* AccountSettingsViewController.swift in Sources */,
-				D4FA3F0D20DCAD21000D78AB /* UserSettingsViewController.swift in Sources */,
+				D4FA3F0D20DCAD21000D78AB /* HistoryViewController.swift in Sources */,
 				D4526E9120BB478200D377D7 /* LoginViewController.swift in Sources */,
 				D4F3C6F320D1654500C35683 /* EMConstants.swift in Sources */,
 				D4526E9720BB478200D377D7 /* Evolve_Markets.xcdatamodeld in Sources */,

@@ -12,9 +12,11 @@ import AlamofireObjectMapper
 
 
 class EMClient: NSObject {
+    
     var sessionID: String = ""
     var user: EMUser!
     var accountDidChange = false
+    var dataController: DataController!
     
     //MARK: Parameters
     func loginMethod(email: String, password: String, completion: @escaping(Error?) -> Void) {
@@ -35,6 +37,7 @@ class EMClient: NSObject {
                 EMClient.sharedInstance().loginWithSessionID() { (error) in
                     if error != nil {
                         completion(error)
+                        return
                     } else {
                         completion(nil)
                     }
@@ -56,6 +59,7 @@ class EMClient: NSObject {
         request.response {( response) in
             if response.error != nil {
                 completion(response.error)
+                return
             }
             EMClient.sharedInstance().sessionID = HTTPCookieStorage.shared.cookies!.first!.value
             completion(nil)
@@ -72,6 +76,7 @@ class EMClient: NSObject {
             
             if response.error != nil {
                 completion(response.error)
+                return
             }
             let accounts = response.result.value
             EMClient.sharedInstance().user = accounts
@@ -79,6 +84,7 @@ class EMClient: NSObject {
             completion(nil)
         }
     }
+    
     //MARK: Demo Add Funds
     func demoPostFunds(accountNumber: Int, amount: Double, completion: @escaping(Error?) -> Void) {
         let baseURL = "\(EMClient.Constants.ApiMethods.demoPostMethod)?sessionid=\(sessionID)"
@@ -88,11 +94,13 @@ class EMClient: NSObject {
         request.responseJSON {(response) in
             if response.error != nil {
                 completion(response.error)
+                return
             }
             
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(error)
+                    return
                 }
                 completion(nil)
             }
@@ -100,6 +108,7 @@ class EMClient: NSObject {
         }
     }
     
+    //MARK: Delete account
     func deleteAccount(accountNumber: Int, completion: @escaping(Error?) -> Void) {
         let methodParameters: Parameters = ["accountid":"\(accountNumber)"]
         let request = Alamofire.request(EMClient.Constants.ApiMethods.deleteAccountMethod, method: .post, parameters: methodParameters, encoding: URLEncoding.default)
@@ -107,15 +116,21 @@ class EMClient: NSObject {
         request.responseJSON {(response) in
             if response.error != nil {
                 completion(response.error)
+                return
             }
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(response.error)
+                    return
                 }
                 completion(nil)
                 
             }
         }
+    }
+    
+    func updateEmailSettings(completion: @escaping (Error?) -> Void) {
+        
     }
     
     //MARK: Update account method
@@ -134,6 +149,7 @@ class EMClient: NSObject {
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(response.error)
+                    return
                 }
                 completion(nil)
             }
@@ -153,10 +169,12 @@ class EMClient: NSObject {
         request.response {(response) in
             if response.error != nil {
                 completion(response.error)
+                return
             }
             completion(nil)
         }
     }
+    
     class func sharedInstance() -> EMClient {
         struct Singleton {
             static var sharedInstance = EMClient()

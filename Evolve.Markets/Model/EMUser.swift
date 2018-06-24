@@ -10,16 +10,12 @@ import Foundation
 import UIKit
 import ObjectMapper
 
-
 class EMUser: Mappable {
     
-    //var accountType: String?
     var accountDemo: [EMAccount]?
     var accountLive: [EMAccount]?
     
-    
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {

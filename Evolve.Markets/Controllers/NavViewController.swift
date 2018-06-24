@@ -12,6 +12,7 @@ import UIKit
 class NavViewController: UINavigationController {
     
     @IBOutlet weak var navBar: UINavigationBar!
+   
     
     override func viewDidLoad() {
         
@@ -27,7 +28,7 @@ class NavViewController: UINavigationController {
        
         navBar.items?.append(logOutButton)
     }
-    
+    //MARK: log out of session
     @objc func logOut() {
         EMClient.sharedInstance().deleteSession() {(error) in
             if error != nil {
@@ -40,7 +41,7 @@ class NavViewController: UINavigationController {
             }
         }
     }
-    
+    //MARK: Refresh
     @objc func refresh() {
         self.visibleViewController?.viewDidLoad()
         self.visibleViewController?.viewWillAppear(true)

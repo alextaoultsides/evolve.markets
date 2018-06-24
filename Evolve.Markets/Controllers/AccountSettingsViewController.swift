@@ -36,10 +36,12 @@ class AccountSettingsViewController: UIViewController {
         } else {
             setAccountType.selectedSegmentIndex = 1
         }
-        if account.accountType == "Live" {
-            deleteAccountButton.isEnabled = false
-        }
+        
         deleteAccountButton.addTarget(self, action: #selector(self.demoDeleteAccount(_:)), for: .touchUpInside)
+        if account.accountType == "live" {
+            deleteAccountButton.isEnabled = false
+            deleteAccountButton.alpha = 0.5
+        }
     }
     
     override func viewDidLoad() {
@@ -81,12 +83,11 @@ class AccountSettingsViewController: UIViewController {
         self.view.addSubview(navbar)
     }
     
-    //Updates account settings if they have changed
+    //MARK: Updates account settings if they have changed
     @objc func saveUpdates(_ sender: UIButton) {
         performUIUpdatesOnMain {
             self.actInd.startAnimating()
         }
-        
         
         if setAccountNameTextfield.text! != "" {
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "name", updatedItem: setAccountNameTextfield.text!){ (error) in
@@ -124,13 +125,13 @@ class AccountSettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK Delete account button
+    //MARK: Delete account button
     @objc func demoDeleteAccount(_ sender: UIButton) {
         let accountNum = account.metaID
         UserAccountsViewController().removeAccountPrompt(accountNum: accountNum!)
         dismiss(animated: true, completion: nil)
     }
-    
+    //MARK: Dismiss Controller
     @objc func dismissController(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

@@ -11,7 +11,6 @@ import UIKit
 
 extension UIViewController {
     
-    
     func showActivityIndicator(uiView: UIView) -> UIActivityIndicatorView{
         let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
         actInd.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
