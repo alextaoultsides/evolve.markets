@@ -27,14 +27,14 @@ For live accounts you must use
 ### Link to Webtrader is provided but can not autofill account info due to iOS app to app limitations
 
 ## Live Accounts
-### Live account settings may be changed by pressing settings button.  Live accounts can not be deleted.
-### Deposits and withdrawals on live accounts must be made through website.  Clicking on either button will prompt user to be redirected to their default web browser.
+Live account settings may be changed by pressing settings button.  Live accounts can not be deleted.
+Deposits and withdrawals on live accounts must be made through website.  Clicking on either button will prompt user to be redirected to their default web browser.
 
 
 ## Demo Accounts
-### Deposit button prompts user for amount.
-### Remove button prompts user for deletion of account
-### Change settings and even delete account through 
+ Deposit button prompts user for amount.
+Remove button prompts user for deletion of account
+Change settings and even delete account through 
 
 <img src= "https://github.com/alextaoultsides/evolve.markets/blob/master/images/addFunds.png" width="300" />
 
@@ -42,17 +42,17 @@ For live accounts you must use
 
 <img src= "https://github.com/alextaoultsides/evolve.markets/blob/master/images/accountSetting.png" width="300" />
 
-### Change name, set leverage, set account type and delete demo account
-### Must press save to commit changes 
+Change name, set leverage, set account type and delete demo account
+Must press save to commit changes 
 
 
 ## User Settings Tab
-### Set E-mail notifications by changing the status of the switches
+Set E-mail notifications by changing the status of the switches
 
 <img src= "https://github.com/alextaoultsides/evolve.markets/blob/master/images/userSetting.png" width="300" />
 
 ## History Tab
-### View successful logins and failed attempts through iOS device.  Login history is presisted to device using CoreData
+View successful logins and failed attempts through iOS device.  Login history is presisted to device using CoreData
 
 <img src= "https://github.com/alextaoultsides/evolve.markets/blob/master/images/history.png" width="300" />
 
