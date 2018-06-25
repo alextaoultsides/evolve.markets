@@ -31,9 +31,6 @@ class UserAccountsViewController: UIViewController {
         userAccounts = EMClient.sharedInstance().user
         
         reload()
-        performUIUpdatesOnMain {
-            self.accountTableView.reloadData()
-        }
     }
     
     //MARK: Refresh View
@@ -45,6 +42,7 @@ class UserAccountsViewController: UIViewController {
             }
             
             performUIUpdatesOnMain {
+                self.accountTableView.reloadData()
                 self.actInd.stopAnimating()
             }
         }
@@ -164,6 +162,7 @@ class UserAccountsViewController: UIViewController {
                     self.displayError(error?.localizedDescription)
                     self.actInd.stopAnimating()
                 }
+                self.reload()
             }
         }
         alert.showEdit("Delete Account?", subTitle: "\(accountNum)",closeButtonTitle: "No",colorStyle: 0x007AFF, circleIconImage: alertViewIcon)
