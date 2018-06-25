@@ -5,7 +5,9 @@ An application for viewing and managing Evolve.Markets accounts.
 App is designed to be more mobile friendly than the website using Evolve.Markets API.
 
 # Installation
-Download repository and run Evolve.Markets.xcworkspace. 
+
+
+Download repository and run Evolve.Markets.xcworkspace in iOS 9.2+
 It uses multiple frameworks using Pod so it only works if you run the workspace file.
 
 # How to Use
