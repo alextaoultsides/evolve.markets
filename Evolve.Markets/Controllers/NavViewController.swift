@@ -43,8 +43,10 @@ class NavViewController: UINavigationController {
     }
     //MARK: Refresh
     @objc func refresh() {
+        
         self.visibleViewController?.viewDidLoad()
         self.visibleViewController?.viewWillAppear(true)
+        
     }
     
     

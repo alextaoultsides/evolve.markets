@@ -65,6 +65,7 @@ class EMClient: NSObject {
             completion(nil)
         }
     }
+    
     //MARK: Login With Session ID
     func loginWithSessionID(completion: @escaping(Error?) -> Void) {
         let baseURL = "https://mt5.clients.evolve.markets/api/user/info/"
@@ -73,14 +74,12 @@ class EMClient: NSObject {
         
         request.responseObject { (response: DataResponse<EMUser>) in
             
-            
             if response.error != nil {
                 completion(response.error)
                 return
             }
             let accounts = response.result.value
             EMClient.sharedInstance().user = accounts
-            
             completion(nil)
         }
     }
@@ -96,7 +95,6 @@ class EMClient: NSObject {
                 completion(response.error)
                 return
             }
-            
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(error)
@@ -129,8 +127,26 @@ class EMClient: NSObject {
         }
     }
     
-    func updateEmailSettings(completion: @escaping (Error?) -> Void) {
+    //MARK: Update email settings
+    func updateEmailSettings(switchState:Bool,switchName: String, completion: @escaping (Error?) -> Void) {
+        let switchNum: String
+        if switchState == true {
+            switchNum = "1"
+        } else {
+            switchNum = "0"
+        }
+        let baseURL = EMClient.Constants.ApiMethods.updateUserMethod
+        let methodParameters: Parameters = ["sessionid":sessionID, "update":"notification", "notification":switchName, "switch":switchNum]
+        let request = Alamofire.request(baseURL, method: .post, parameters: methodParameters, encoding: JSONEncoding.default)
         
+        request.response{ (response) in
+            if response.error != nil {
+                completion(response.error)
+            } else {
+                print(response)
+                completion(nil)
+            }
+        }
     }
     
     //MARK: Update account method
@@ -144,8 +160,7 @@ class EMClient: NSObject {
             if response.error != nil {
                 completion(response.error)
             }
-            print("*********************")
-            
+
             EMClient.sharedInstance().loginWithSessionID() { (error) in
                 if error != nil {
                     completion(response.error)

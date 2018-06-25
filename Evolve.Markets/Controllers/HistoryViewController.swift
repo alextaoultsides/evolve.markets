@@ -19,16 +19,31 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataController = EMClient.sharedInstance().dataController
+        print(dataController.viewContext.hasChanges)
         setUpFetchedResultsController()
+        self.navigationItem.title = "Login History"
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setUpFetchedResultsController()
+        performUIUpdatesOnMain {
+            self.historyTableview.reloadData()
+        }
+        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
+    }
+    
     //MARK: fetched results controller
     func setUpFetchedResultsController() {
         let fetchRequest:NSFetchRequest<AppLogins> = AppLogins.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "loginDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "applogins")
-        fetchedResultsController.delegate = self
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "AppLogins")
+        
         do {
             try fetchedResultsController.performFetch()
         } catch{
@@ -41,37 +56,23 @@ class HistoryViewController: UIViewController {
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return fetchedResultsController.sections?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if fetchedResultsController.sections?[section].numberOfObjects != nil {
-            return (fetchedResultsController.fetchedObjects?.count)!
-        } else {
-            return 0
-        }
+        return fetchedResultsController.fetchedObjects!.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = historyTableview.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath)
         let loginDate = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = String(describing: loginDate.loginDate!)
+        let date = DateFormatter()
+        date.dateStyle = .full
+
+        cell.textLabel?.text = loginDate.success
+        cell.detailTextLabel?.text = String(describing: loginDate.loginDate!)
         
         return cell
     }
 }
 
-//MARK: Fetch Results Controller Delegate
-extension HistoryViewController:NSFetchedResultsControllerDelegate {
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            return
-        case .delete:
-            return
-        default:
-            break
-        }
-    }
-}

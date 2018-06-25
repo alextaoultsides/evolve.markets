@@ -24,15 +24,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         actInd = showActivityIndicator(uiView: self.view)
         setTextDelegate()
-        emailTextField.text = ""
-        passwordTextfield.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         sessionLoginCheck = false
+        emailTextField.text = ""
+        passwordTextfield.text = ""
         
     }
+    
     
     func setTextDelegate() {
         emailTextField.delegate = loginTextfieldDelegate
@@ -45,20 +46,25 @@ class LoginViewController: UIViewController {
             self.actInd.startAnimating()
         }
         
-        
-        EMClient().loginMethod(email: emailTextField.text!, password: passwordTextfield.text!) { (error) in
+        EMClient.sharedInstance().loginMethod(email: emailTextField.text!, password: passwordTextfield.text!) { (error) in
             if error != nil {
                 self.displayError(error?.localizedDescription)
-                self.actInd.stopAnimating()
-            } else {
                 let appLogin = AppLogins(context: self.dataController.viewContext)
                 appLogin.loginDate = Date()
-                print(appLogin.loginDate)
+                appLogin.success = "Failed Login"
                 try? self.dataController.viewContext.save()
+                self.actInd.stopAnimating()
+                return
+            } else {
+                
+                let appLogin = AppLogins(context: self.dataController.viewContext)
+                appLogin.loginDate = Date()
+                appLogin.success = "Success"
+                try? self.dataController.viewContext.save()
+                EMClient.sharedInstance().dataController = self.dataController
                 performUIUpdatesOnMain {
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "navView") as! NavViewController
                     self.view.endEditing(true)
-                    EMClient.sharedInstance().dataController = self.dataController
                     self.present(controller, animated: true, completion: nil)
                     
                     self.actInd.stopAnimating()
@@ -76,28 +82,5 @@ class LoginViewController: UIViewController {
         let app = UIApplication.shared
         app.open(URL(string: "https://mt5.clients.evolve.markets/password/")!, completionHandler: nil)
     }
-    
-//    func subscribeToKeyboardNotifications() {
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-//    }
-//
-//    func unsubscribeFromKeyboardNotifications() {
-//
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//
-//    @objc func keyboardWillHide(_ notification:Notification){
-//        view.frame.origin.y = 0
-//    }
-//
-//    @objc func keyboardWillShow(_ notification:Notification) {
-//        if view.frame.origin.y == 0 {
-//
-//            view.frame.origin.y -= (getKeyboardHeight(notification) / 2.5)
-//
-//        }
-//    }
 }
 

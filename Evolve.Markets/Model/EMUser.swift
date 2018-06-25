@@ -14,6 +14,7 @@ class EMUser: Mappable {
     
     var accountDemo: [EMAccount]?
     var accountLive: [EMAccount]?
+    var notifications: [String:Int]?
     
     required init?(map: Map) {
     }
@@ -21,6 +22,6 @@ class EMUser: Mappable {
     func mapping(map: Map) {
         accountDemo <- map["data.accounts.demo"]
         accountLive <- map["data.accounts.live"]
-        
+        notifications <- map["data.notify_settings"]
     }
 }
