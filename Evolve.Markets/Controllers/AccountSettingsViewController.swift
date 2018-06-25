@@ -44,6 +44,7 @@ class AccountSettingsViewController: UIViewController {
         }
     }
     
+    //MARK: View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         actInd = showActivityIndicator(uiView: self.view)
@@ -61,7 +62,7 @@ class AccountSettingsViewController: UIViewController {
     func addNavBar(){
         let screenSize: CGRect = UIScreen.main.bounds
         
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 64))
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 64))
         navbar.backgroundColor = UIColor.init(red: 0.0, green: 0.478, blue: 1.0, alpha: 0.0)
 
         navbar.barTintColor = UIColor.init(red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0)
@@ -94,34 +95,40 @@ class AccountSettingsViewController: UIViewController {
                 if error != nil{
                     self.displayError(error?.localizedDescription)
                 }
-                print("name Changed")
-                
-                
+                performUIUpdatesOnMain {
+                    self.actInd.stopAnimating()
+                }
             }
         }
-        
+        performUIUpdatesOnMain {
+            self.actInd.startAnimating()
+        }
         if setLeveragePickerView.selectedRow(inComponent: 0) != currentLeverage() {
             setLeveragePickerView.selectedRow(inComponent: 0)
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "leverage", updatedItem: newLeverages[setLeveragePickerView.selectedRow(inComponent: 0)]){ (error) in
                 if error != nil{
                     self.displayError(error?.localizedDescription)
                 }
-                print("leverage Changed")
+                performUIUpdatesOnMain {
+                    self.actInd.stopAnimating()
+                }
             }
         }
-        
+        performUIUpdatesOnMain {
+            self.actInd.startAnimating()
+        }
         if setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex) != account.group {
             print("\(account.accountType!) \(account.group!) \(setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!)")
             EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "group", updatedItem: setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!){ (error) in
                 if error != nil{
                     self.displayError(error?.localizedDescription)
                 }
-                print("Type Changed")
+                performUIUpdatesOnMain {
+                    self.actInd.stopAnimating()
+                }
             }
         }
-        performUIUpdatesOnMain {
-            self.actInd.stopAnimating()
-        }
+        
         dismiss(animated: true, completion: nil)
     }
     

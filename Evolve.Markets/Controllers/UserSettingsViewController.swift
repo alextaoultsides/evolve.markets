@@ -20,7 +20,7 @@ class UserSettingsViewController: UIViewController {
         setSwitches()
     }
     
-    
+    //MARK: set switch UI
     func setSwitches() {
         var notifications = EMClient.sharedInstance().user.notifications
         if notifications!["login"] == 1 {
@@ -39,6 +39,8 @@ class UserSettingsViewController: UIViewController {
             promoSwitch.isOn = false
         }
     }
+    
+    //MARK: UISwitch Actions
     @IBAction func loginSwitchChange(_ sender: Any) {
         EMClient.sharedInstance().updateEmailSettings(switchState: loginSwitch.isOn, switchName: "login"){(error) in
             if error != nil {
@@ -53,7 +55,6 @@ class UserSettingsViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func promoSwitchChange(_ sender: Any) {
         EMClient.sharedInstance().updateEmailSettings(switchState: promoSwitch.isOn, switchName: "promo"){(error) in

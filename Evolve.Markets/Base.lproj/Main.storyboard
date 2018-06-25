@@ -631,7 +631,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VlY-wV-7go">
-                                <rect key="frame" x="32" y="52" width="311" height="583"/>
+                                <rect key="frame" x="32" y="70" width="311" height="565"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W9r-GM-cEn">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="51"/>
@@ -668,7 +668,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-0i-V8a">
-                                        <rect key="frame" x="0.0" y="327" width="311" height="206"/>
+                                        <rect key="frame" x="0.0" y="327" width="311" height="188"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Account Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-4l-ERF">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
@@ -677,10 +677,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ftl-ix-1UZ">
-                                                <rect key="frame" x="0.0" y="20.5" width="311" height="185.5"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="311" height="167.5"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8WV-VD-c4T">
-                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="186.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="168.5"/>
                                                         <segments>
                                                             <segment title="Pro"/>
                                                             <segment title="Classic"/>
@@ -691,7 +691,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvG-ea-cku">
-                                        <rect key="frame" x="0.0" y="553" width="311" height="30"/>
+                                        <rect key="frame" x="0.0" y="535" width="311" height="30"/>
                                         <color key="backgroundColor" red="0.95660156249999995" green="0.029248490495767415" blue="0.02789738253475299" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="a18-RO-9G2"/>
@@ -707,13 +707,28 @@
                                     <constraint firstItem="hvi-0i-V8a" firstAttribute="top" secondItem="VlY-wV-7go" secondAttribute="top" constant="327" id="JiZ-nc-hpG"/>
                                 </constraints>
                             </stackView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stJ-UK-rjY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2C8-Nf-t4c">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <vibrancyEffect>
+                                    <blurEffect style="dark"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VlY-wV-7go" firstAttribute="top" secondItem="F77-NB-nTX" secondAttribute="top" constant="32" id="8X3-S2-Gz5"/>
+                            <constraint firstItem="VlY-wV-7go" firstAttribute="top" secondItem="F77-NB-nTX" secondAttribute="top" constant="50" id="8X3-S2-Gz5"/>
                             <constraint firstItem="F77-NB-nTX" firstAttribute="trailing" secondItem="VlY-wV-7go" secondAttribute="trailing" constant="32" id="8mP-PO-Syh"/>
                             <constraint firstItem="F77-NB-nTX" firstAttribute="bottom" secondItem="VlY-wV-7go" secondAttribute="bottom" constant="32" id="I22-ms-cOL"/>
+                            <constraint firstItem="dYt-Ag-4Gv" firstAttribute="top" secondItem="stJ-UK-rjY" secondAttribute="bottom" constant="26" id="RP4-A1-RIR"/>
+                            <constraint firstItem="stJ-UK-rjY" firstAttribute="top" secondItem="1xo-go-mQr" secondAttribute="top" id="Tfv-t0-jtc"/>
                             <constraint firstItem="VlY-wV-7go" firstAttribute="leading" secondItem="F77-NB-nTX" secondAttribute="leading" constant="32" id="YwK-aZ-B4B"/>
+                            <constraint firstItem="stJ-UK-rjY" firstAttribute="leading" secondItem="F77-NB-nTX" secondAttribute="leading" id="eIT-VT-dTe"/>
+                            <constraint firstItem="stJ-UK-rjY" firstAttribute="trailing" secondItem="F77-NB-nTX" secondAttribute="trailing" id="zU8-Xc-7nJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F77-NB-nTX"/>
                     </view>
@@ -726,7 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNc-ve-DYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="639"/>
+            <point key="canvasLocation" x="2424.8000000000002" y="638.2308845577212"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">

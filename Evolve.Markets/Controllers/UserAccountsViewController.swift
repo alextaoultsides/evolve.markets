@@ -38,12 +38,12 @@ class UserAccountsViewController: UIViewController {
     
     //MARK: Refresh View
     func reload() {
-        accountTableView.beginUpdates()
+        
         EMClient.sharedInstance().loginWithSessionID() { (error) in
             if error != nil {
                 self.displayError(error?.localizedDescription)
             }
-            self.accountTableView.endUpdates()
+            
             performUIUpdatesOnMain {
                 self.actInd.stopAnimating()
             }
@@ -123,6 +123,13 @@ class UserAccountsViewController: UIViewController {
             completion(nil)
         }
     }
+    
+    @objc func webtrader(_ sender: UIButton) {
+        let appURL = "itms://itunes.apple.com/us/app/metatrader-5-forex-stocks/id413251709"
+        let app = UIApplication.shared
+        app.open(URL(string: appURL)!, completionHandler: nil)
+
+    }
     //MARK:  Live account browser forwarding
     func websiteForward(deposit: Bool, accountNum: Int) {
         let appearance = SCLAlertView.SCLAppearance(
@@ -197,13 +204,14 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.accountLeverage.text = "\(user.accountLive![indexPath.row - 1].leverage!):1"
                 cell.withdrawButton.layer.borderWidth = 1
                 cell.withdrawButton.layer.borderColor = UIColor.blue.cgColor
-                cell.setButton()
                 cell.withdrawButton.tag = indexPath.row - 1
                 cell.withdrawButton.addTarget(self, action: #selector(self.liveAccountWithdraw(_:)), for: .touchUpInside)
                 cell.depositButton.tag = indexPath.row - 1
                 cell.depositButton.addTarget(self, action: #selector(self.liveAccountDeposit(_:)), for: .touchUpInside)
                 cell.settingsButton.tag = indexPath.row - 1
                 cell.settingsButton.addTarget(self, action: #selector(self.liveAccountSettings(_:)), for: .touchUpInside)
+                cell.webtraderButton.addTarget(self, action: #selector(self.webtrader(_:)), for: .touchUpInside)
+
             }
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0 {
@@ -220,13 +228,13 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.accountLeverage.text = "\(user.accountDemo![indexPath.row - 1].leverage!):1"
                 cell.withdrawButton.layer.borderWidth = 1
                 cell.withdrawButton.layer.borderColor = UIColor.blue.cgColor
-                cell.setButton()
                 cell.withdrawButton.tag = indexPath.row - 1
                 cell.withdrawButton.addTarget(self, action: #selector(self.demoDeleteAccount(_:)), for: .touchUpInside)
                 cell.depositButton.tag = indexPath.row - 1
                 cell.depositButton.addTarget(self, action: #selector(self.demoAddFunds(_: )), for: .touchUpInside)
                 cell.settingsButton.tag = indexPath.row - 1
                 cell.settingsButton.addTarget(self, action: #selector(self.demoAccountSettings(_:)), for: .touchUpInside)
+                cell.webtraderButton.addTarget(self, action: #selector(self.webtrader(_:)), for: .touchUpInside)
             }
             return cell
         }

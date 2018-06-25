@@ -25,14 +25,13 @@ class AccountCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        //setButton()
+        setButton()
     }
     
     func setButton() {
         withdrawButton.backgroundColor = .clear
         withdrawButton.layer.borderWidth = 1
         withdrawButton.layer.borderColor = UIColor.blue.cgColor
-        
         
         let topBorder = CALayer()
         topBorder.borderColor = UIColor.lightGray.cgColor
@@ -45,8 +44,6 @@ class AccountCell: UITableViewCell {
         rightBorder.borderWidth = 1
         rightBorder.frame = CGRect.init(x: settingsButton.frame.width, y: 0, width: 1, height: settingsButton.frame.height)
         settingsButton.layer.addSublayer(rightBorder)
-        
-        
-        
     }
+    
 }

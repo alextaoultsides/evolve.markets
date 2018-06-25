@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    
     func setTextDelegate() {
         emailTextField.delegate = loginTextfieldDelegate
         passwordTextfield.delegate = loginTextfieldDelegate
