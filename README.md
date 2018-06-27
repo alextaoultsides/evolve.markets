@@ -34,7 +34,7 @@ Deposits and withdrawals on live accounts must be made through website.  Clickin
 
 
 ## Demo Accounts
- Deposit button prompts user for amount.
+ Add Funds button prompts user for amount.
 Remove button prompts user for deletion of account
 Change settings and even delete account through 
 
