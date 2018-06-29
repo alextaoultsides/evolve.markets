@@ -18,6 +18,7 @@ class UserSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSwitches()
+        
     }
     
     //MARK: set switch UI

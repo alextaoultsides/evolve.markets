@@ -190,10 +190,13 @@ class EMClient: NSObject {
         }
     }
     
+   
+    
     class func sharedInstance() -> EMClient {
         struct Singleton {
             static var sharedInstance = EMClient()
         }
         return Singleton.sharedInstance
     }
+    
 }
