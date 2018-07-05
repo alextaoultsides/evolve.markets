@@ -21,6 +21,7 @@
 		D47B689B20BF2BDE0035F749 /* EMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B689A20BF2BDE0035F749 /* EMUser.swift */; };
 		D47B68A920C1A5430035F749 /* EMAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B68A820C1A5430035F749 /* EMAccount.swift */; };
 		D482340920D8156000D197D1 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482340820D8156000D197D1 /* AccountSettingsViewController.swift */; };
+		D4828F4E20ED6C5900BCA257 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */; };
 		D4A4C40520D44D4800D2D811 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */; };
 		D4C16AD320C8512100547C95 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C16AD220C8512100547C95 /* AccountCell.swift */; };
 		D4EFDB1920DAABA600E7941E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFDB1820DAABA600E7941E /* DataController.swift */; };
@@ -63,6 +64,7 @@
 		D47B689A20BF2BDE0035F749 /* EMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUser.swift; sourceTree = "<group>"; };
 		D47B68A820C1A5430035F749 /* EMAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAccount.swift; sourceTree = "<group>"; };
 		D482340820D8156000D197D1 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
+		D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D4C16AD220C8512100547C95 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		D4EFDB1820DAABA600E7941E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				D47B682220BEF0C20035F749 /* DisplayError.swift */,
 				D4C16AD220C8512100547C95 /* AccountCell.swift */,
 				D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */,
+				D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				D482340920D8156000D197D1 /* AccountSettingsViewController.swift in Sources */,
 				D4FA3F0D20DCAD21000D78AB /* HistoryViewController.swift in Sources */,
 				D4FA3F1D20E064D7000D78AB /* UserSettingsViewController.swift in Sources */,
+				D4828F4E20ED6C5900BCA257 /* EmptyCell.swift in Sources */,
 				D4526E9120BB478200D377D7 /* LoginViewController.swift in Sources */,
 				D4F3C6F320D1654500C35683 /* EMConstants.swift in Sources */,
 				D4526E9720BB478200D377D7 /* Evolve_Markets.xcdatamodeld in Sources */,

@@ -172,14 +172,19 @@ class UserAccountsViewController: UIViewController {
 //MARK: Tableview Delegate
 extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             if let row = EMClient.sharedInstance().user {
                 return (row.accountLive?.count)! + 1
             }
-        } else if section == 1 {
+        }
+//        } else if section == 1 {
+//            if let row =
+//        }
+        
+        else if section == 2 {
             if let row = EMClient.sharedInstance().user {
                 return (row.accountDemo?.count)! + 1
             }
@@ -213,7 +218,12 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
 
             }
             return cell
-        } else if indexPath.section == 1 && indexPath.row == 0 {
+        } else if indexPath.section == 1 && indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell") as! EmptyCell
+            return cell
+        }
+        
+        else if indexPath.section == 2 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "demoAccountLabel")
             return cell!
         } else {

@@ -397,8 +397,19 @@
                                             <outlet property="withdrawButton" destination="L3G-LV-Nvx" id="Lr3-eQ-aBT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="16" id="eMs-bm-YJa" userLabel="EmptyCell" customClass="EmptyCell" customModule="Evolve_Markets" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="335" width="343" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eMs-bm-YJa" id="Kjg-9l-A8I">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="15.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.94117647059999998" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="demoAccountLabel" rowHeight="49" id="Jfk-aw-RMV">
-                                        <rect key="frame" x="0.0" y="335" width="343" height="49"/>
+                                        <rect key="frame" x="0.0" y="351" width="343" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfk-aw-RMV" id="89e-oT-uZL">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="48.5"/>
@@ -419,7 +430,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="demoAccountCell" rowHeight="258" id="LKd-or-mJC" userLabel="demoAccountCell" customClass="AccountCell" customModule="Evolve_Markets" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="384" width="343" height="258"/>
+                                        <rect key="frame" x="0.0" y="400" width="343" height="258"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LKd-or-mJC" id="Hvm-hr-vNg">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="257.5"/>
