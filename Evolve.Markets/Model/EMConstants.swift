@@ -16,6 +16,7 @@ extension EMClient {
             static let updateUserMethod = "https://mt5.clients.evolve.markets/api/user/update/"
             static let deleteAccountMethod = "https://mt5.clients.evolve.markets/api/account/delete/"
             static let logoutUserMethod = "https://mt5.clients.evolve.markets/logout/"
+            static let postNewAccount = "https://mt5.clients.evolve.markets/api/account/new/"
         }
     }
 }

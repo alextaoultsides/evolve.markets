@@ -171,7 +171,7 @@
         <!--Evolve.Markets-->
         <scene sceneID="6aZ-Mm-hSh">
             <objects>
-                <tabBarController id="ibR-WB-F5s" sceneMemberID="viewController">
+                <tabBarController id="ibR-WB-F5s" customClass="TabBarViewController" customModule="Evolve_Markets" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Evolve.Markets" id="NgH-nE-Bwl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="6eQ-NJ-VVQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -216,10 +216,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEo-6f-dYS">
+                                                    <rect key="frame" x="301" y="11" width="27" height="24"/>
+                                                    <state key="normal" title="Button" image="plus-simple-7"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TCp-W7-Vbt" secondAttribute="trailingMargin" id="bK8-R7-gwr"/>
+                                                <constraint firstItem="OEo-6f-dYS" firstAttribute="top" secondItem="L5r-kK-sMG" secondAttribute="top" constant="11" id="N2L-xU-yu2"/>
+                                                <constraint firstAttribute="trailing" secondItem="OEo-6f-dYS" secondAttribute="trailing" constant="15" id="h7r-hE-No4"/>
                                                 <constraint firstItem="TCp-W7-Vbt" firstAttribute="centerY" secondItem="L5r-kK-sMG" secondAttribute="centerY" id="lqK-3J-WtD"/>
+                                                <constraint firstAttribute="bottom" secondItem="OEo-6f-dYS" secondAttribute="bottom" constant="13.5" id="tVd-3x-1I9"/>
                                                 <constraint firstItem="TCp-W7-Vbt" firstAttribute="leading" secondItem="L5r-kK-sMG" secondAttribute="leadingMargin" constant="-1" id="xMO-tD-Sfv"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -415,17 +421,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="48.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-f8-8oQ">
-                                                    <rect key="frame" x="14" y="14" width="121.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eP1-nK-7Th">
+                                                    <rect key="frame" x="16" y="0.0" width="311" height="48.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-f8-8oQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="227" height="48.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-pr-ks3">
+                                                            <rect key="frame" x="227" y="0.0" width="84" height="48.5"/>
+                                                            <state key="normal" title="Button" image="plus-simple-7"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MCk-f8-8oQ" secondAttribute="trailingMargin" id="60N-wH-eaM"/>
-                                                <constraint firstItem="MCk-f8-8oQ" firstAttribute="centerY" secondItem="89e-oT-uZL" secondAttribute="centerY" id="7an-kv-J1z"/>
-                                                <constraint firstItem="MCk-f8-8oQ" firstAttribute="leading" secondItem="89e-oT-uZL" secondAttribute="leadingMargin" constant="-1" id="gUk-wE-GFm"/>
+                                                <constraint firstItem="eP1-nK-7Th" firstAttribute="top" secondItem="89e-oT-uZL" secondAttribute="top" id="7YB-JC-21B"/>
+                                                <constraint firstItem="eP1-nK-7Th" firstAttribute="leading" secondItem="89e-oT-uZL" secondAttribute="leading" constant="16" id="R1m-SN-euV"/>
+                                                <constraint firstAttribute="trailing" secondItem="eP1-nK-7Th" secondAttribute="trailing" constant="16" id="cGy-h5-0eg"/>
+                                                <constraint firstAttribute="bottom" secondItem="eP1-nK-7Th" secondAttribute="bottom" id="dbO-9S-VHp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -917,5 +933,6 @@
         <image name="EMLogoWhite" width="300" height="100"/>
         <image name="album-simple-7" width="30" height="30"/>
         <image name="gear-7" width="30" height="30"/>
+        <image name="plus-simple-7" width="30" height="30"/>
     </resources>
 </document>

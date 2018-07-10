@@ -24,6 +24,7 @@
 		D4828F4E20ED6C5900BCA257 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */; };
 		D4A4C40520D44D4800D2D811 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */; };
 		D4C16AD320C8512100547C95 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C16AD220C8512100547C95 /* AccountCell.swift */; };
+		D4C19F8520F561D400FA35BD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C19F8420F561D400FA35BD /* TabBarViewController.swift */; };
 		D4EFDB1920DAABA600E7941E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EFDB1820DAABA600E7941E /* DataController.swift */; };
 		D4F3C6E820CF4AE500C35683 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3C6E720CF4AE500C35683 /* NavViewController.swift */; };
 		D4F3C6F320D1654500C35683 /* EMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3C6F220D1654500C35683 /* EMConstants.swift */; };
@@ -67,6 +68,7 @@
 		D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D4C16AD220C8512100547C95 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		D4C19F8420F561D400FA35BD /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D4EFDB1820DAABA600E7941E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D4F3C6E720CF4AE500C35683 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		D4F3C6F220D1654500C35683 /* EMConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMConstants.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				D482340820D8156000D197D1 /* AccountSettingsViewController.swift */,
 				D4FA3F0C20DCAD21000D78AB /* HistoryViewController.swift */,
 				D4FA3F1C20E064D7000D78AB /* UserSettingsViewController.swift */,
+				D4C19F8420F561D400FA35BD /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				D4828F4E20ED6C5900BCA257 /* EmptyCell.swift in Sources */,
 				D4526E9120BB478200D377D7 /* LoginViewController.swift in Sources */,
 				D4F3C6F320D1654500C35683 /* EMConstants.swift in Sources */,
+				D4C19F8520F561D400FA35BD /* TabBarViewController.swift in Sources */,
 				D4526E9720BB478200D377D7 /* Evolve_Markets.xcdatamodeld in Sources */,
 				D4EFDB1920DAABA600E7941E /* DataController.swift in Sources */,
 				D47B68A920C1A5430035F749 /* EMAccount.swift in Sources */,
