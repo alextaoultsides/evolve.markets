@@ -31,7 +31,7 @@ extension UIViewController {
 //        navItem.leftBarButtonItem = cancelButton
 //        navItem.title = "Account Settings: \(account.metaID!)"
 //        
-        navbar.setItems([navItem], animated: true)
+ //       navbar.setItems([navItem], animated: true)
         self.view.addSubview(navbar)
     }
 }

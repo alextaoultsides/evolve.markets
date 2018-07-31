@@ -433,6 +433,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-pr-ks3">
                                                             <rect key="frame" x="227" y="0.0" width="84" height="48.5"/>
                                                             <state key="normal" title="Button" image="plus-simple-7"/>
+                                                            <connections>
+                                                                <segue destination="mzN-Dz-md8" kind="show" id="81P-jy-qIS"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

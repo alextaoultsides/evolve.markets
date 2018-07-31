@@ -10,7 +10,6 @@
 		A6287FB88E2CAA972AB37A8B /* Pods_Evolve_Markets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B2F3C5769FC16C85C01825 /* Pods_Evolve_Markets.framework */; };
 		D416507D20C36632000E07E1 /* UserAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D416507C20C36632000E07E1 /* UserAccountsViewController.swift */; };
 		D436BC4721054CA10032036B /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436BC4621054CA10032036B /* NewAccountViewController.swift */; };
-		D436BC4921056AF10032036B /* AddNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436BC4821056AF10032036B /* AddNavBar.swift */; };
 		D4526E8F20BB478200D377D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4526E8E20BB478200D377D7 /* AppDelegate.swift */; };
 		D4526E9120BB478200D377D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4526E9020BB478200D377D7 /* LoginViewController.swift */; };
 		D4526E9420BB478200D377D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4526E9220BB478200D377D7 /* Main.storyboard */; };
@@ -54,7 +53,6 @@
 		2964F6EA4006282944D8E89E /* Pods-Evolve.Markets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Evolve.Markets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Evolve.Markets/Pods-Evolve.Markets.debug.xcconfig"; sourceTree = "<group>"; };
 		D416507C20C36632000E07E1 /* UserAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsViewController.swift; sourceTree = "<group>"; };
 		D436BC4621054CA10032036B /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
-		D436BC4821056AF10032036B /* AddNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNavBar.swift; sourceTree = "<group>"; };
 		D4526E8B20BB478200D377D7 /* Evolve.Markets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Evolve.Markets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4526E8E20BB478200D377D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4526E9020BB478200D377D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				D4C16AD220C8512100547C95 /* AccountCell.swift */,
 				D4A4C40420D44D4800D2D811 /* ActivityIndicator.swift */,
 				D4828F4D20ED6C5900BCA257 /* EmptyCell.swift */,
-				D436BC4821056AF10032036B /* AddNavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 				D4C16AD320C8512100547C95 /* AccountCell.swift in Sources */,
 				D4F3C6E820CF4AE500C35683 /* NavViewController.swift in Sources */,
 				D4526E8F20BB478200D377D7 /* AppDelegate.swift in Sources */,
-				D436BC4921056AF10032036B /* AddNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

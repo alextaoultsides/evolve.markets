@@ -171,6 +171,21 @@ class EMClient: NSObject {
         }
     }
     
+    func postNewAccount(completion: @escaping(Error?) -> Void) {
+        let baseURL = "\(EMClient.Constants.ApiMethods.postNewAccount)?sessionid=\(sessionID)"
+        
+        let request = Alamofire.request(baseURL, method: .post, encoding: JSONEncoding.default)
+        request.response {(response) in
+            if response.error != nil {
+                completion(response.error)
+                
+            } else {
+                
+                completion(nil)
+            }
+        }
+    }
+    
     //MARK: Log Out and Delete Session
     func deleteSession(completion: @escaping(Error?) -> Void) {
         let baseURL = "\(EMClient.Constants.ApiMethods.logoutUserMethod)?sessionid=\(sessionID)"
@@ -191,7 +206,6 @@ class EMClient: NSObject {
     }
     
    
-    
     class func sharedInstance() -> EMClient {
         struct Singleton {
             static var sharedInstance = EMClient()
