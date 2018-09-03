@@ -117,17 +117,6 @@ class AccountSettingsViewController: UIViewController {
         performUIUpdatesOnMain {
             self.actInd.startAnimating()
         }
-        if setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex) != account.group {
-            print("\(account.accountType!) \(account.group!) \(setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!)")
-            EMClient.sharedInstance().updateAccount(accountId: account.metaID!, accountType: account.accountType!, updateType: "group", updatedItem: setAccountType.titleForSegment(at: setAccountType.selectedSegmentIndex)!){ (error) in
-                if error != nil{
-                    self.displayError(error?.localizedDescription)
-                }
-                performUIUpdatesOnMain {
-                    self.actInd.stopAnimating()
-                }
-            }
-        }
         
         dismiss(animated: true, completion: nil)
     }

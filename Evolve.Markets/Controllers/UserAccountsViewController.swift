@@ -202,7 +202,7 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
             if let user = EMClient.sharedInstance().user {
                 let balance = String(format: "%.8f", (user.accountLive![indexPath.row - 1].balance! / pow(10, 8)))
                 cell.accountBalance.text = "\(balance) \(user.accountLive![indexPath.row - 1].denomination!)"
-                cell.accountType.text = String(describing: user.accountLive![indexPath.row - 1].group!)
+                
                 cell.accountName.text = String(describing: user.accountLive![indexPath.row - 1].name!)
                 cell.accountNumber.text = "\(user.accountLive![indexPath.row - 1].metaID!)"
                 cell.accountLeverage.text = "\(user.accountLive![indexPath.row - 1].leverage!):1"
@@ -231,7 +231,7 @@ extension UserAccountsViewController: UITableViewDelegate, UITableViewDataSource
             if let user = EMClient.sharedInstance().user {
                 let balance = String(format: "%.8f", (user.accountDemo![indexPath.row - 1].balance! / pow(10, 8)))
                 cell.accountBalance.text = "\(balance) \(user.accountDemo![indexPath.row - 1].denomination!)"
-                cell.accountType.text = user.accountDemo![indexPath.row - 1].group!
+                
                 cell.accountName.text = user.accountDemo![indexPath.row - 1].name!
                 cell.accountNumber.text = "\(user.accountDemo![indexPath.row - 1].metaID!)"
                 cell.accountLeverage.text = "\(user.accountDemo![indexPath.row - 1].leverage!):1"

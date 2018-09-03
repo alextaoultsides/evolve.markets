@@ -6,6 +6,7 @@
 //  Copyright © 2018 atao. All rights reserved.
 //
 
+//readable content guide
 import UIKit
 import SafariServices
 import CoreData
